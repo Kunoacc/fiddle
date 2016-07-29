@@ -11,7 +11,7 @@
       <div class="logo"><p>Fiddle</p></div>
       <div class="header-nav">
         <ul>
-          <li><div><a href="#"><i class="glyphicon glyphicon-play icon"></i>Run</a></div></li>
+          <li><div id="Run"><a href="#"><i class="glyphicon glyphicon-play icon"></i>Run</a></div></li>
           <li><div><a href="#"><i class="glyphicon glyphicon-pencil icon"></i>Save</a></div></li>
           <li><div><a href="#"><i class="glyphicon glyphicon-align-left icon"></i>Tidy</a></div></li>
           <li><div><a href="#"><i class="glyphicon glyphicon-road icon"></i>Collaborate</a></div></li>
@@ -24,43 +24,54 @@
     </div>
     <div class="main-content">
         <div class="column left">
-            <div class="html colbox" id="html">
-            	<div id="htmlEditor" style="position:absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+            <div class="html colbox">
+            	<div id="htm-editor"></div>
               	<div class="button"><p>HTML</p><i class="glyphicon glyphicon-cog icon"></i></div>
             </div>
-            <div class="css colbox" id="css"><div class="button"><p>CSS</p><i class="glyphicon glyphicon-cog icon"></i></div></div>
+            <div class="css colbox">
+              <div id="css-editor"></div>
+              <div class="button"><p>CSS</p><i class="glyphicon glyphicon-cog icon"></i></div></div>
         </div>
         <div class="column right">
-            <div class="javascript colbox" id="javascript"><div class="button"><p>JScript</p><i class="glyphicon glyphicon-cog icon"></i></div></div>
-            <div class="result colbox" id="display"></div>
+            <div class="javascript colbox">
+              <div id="js-editor"></div>
+              <div class="button"><p>JScript</p><i class="glyphicon glyphicon-cog icon"></i></div>
+            </div>
+          <div class="result colbox">
+            <iframe class="editor" id="preview" name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0">
+              #document
+            </iframe>
+          </div>
         </div>
     </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="assets/js/ace.js"></script>
-    <script src="assets/js/ext-beautify.js"></script>
-    <script src="assets/js/ext-language_tools.js"></script>
-    <script>
-      ace.require("ace/ext/language_tools");
-    
-      var htmlEditor = ace.edit("htmlEditor");
-      htmlEditor.setTheme("ace/theme/xcode");
-      htmlEditor.getSession().setMode("ace/mode/html");
-      htmlEditor.setOptions({
-        enableBasicAutocompletion: true
-      });
-    
-      var cssEditor = ace.edit("css");
-      cssEditor.setTheme("ace/theme/xcode");
-      cssEditor.getSession().setMode("ace/mode/css");
-      cssEditor.setOptions({
-        enableBasicAutocompletion: true
-      });
-    
-      var jsEditor = ace.edit("javascript");
-      jsEditor.setTheme("ace/theme/xcode");
-      jsEditor.getSession().setMode("ace/mode/javascript");
-      jsEditor.setOptions({
-        enableBasicAutocompletion: true
-      });
-    </script>
+  <script src="assets/js/ext-beautify.js"></script>
+  <script src="assets/js/ext-language_tools.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    ace.require("ace/ext/language_tools");
+
+    var htmlEditor = ace.edit("htm-editor");
+    htmlEditor.setTheme("ace/theme/xcode");
+    htmlEditor.getSession().setMode("ace/mode/html");
+    htmlEditor.setOptions({
+      enableBasicAutocompletion: true
+    });
+
+    var cssEditor = ace.edit("css-editor");
+    cssEditor.setTheme("ace/theme/xcode");
+    cssEditor.getSession().setMode("ace/mode/css");
+    cssEditor.setOptions({
+      enableBasicAutocompletion: true
+    });
+
+    var jsEditor = ace.edit("js-editor");
+    jsEditor.setTheme("ace/theme/xcode");
+    jsEditor.getSession().setMode("ace/mode/javascript");
+    jsEditor.setOptions({
+      enableBasicAutocompletion: true
+    });
+  </script>
 </body>
 </html>

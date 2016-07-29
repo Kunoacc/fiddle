@@ -64,6 +64,10 @@ a:hover{
   text-decoration: none;
   color: #3c3c3c;
 }
+a:active{
+  text-decoration: none;
+  color: #3c3c3c;
+}
 .header-nav ul{
   list-style: none;
   display: inline-flex;
@@ -174,4 +178,22 @@ textarea:focus{
 .icon{
   padding: 5px;
   padding-left: 0px;
+}
+#js-editor, #htm-editor{
+  top: 0px;
+  bottom: 47vh;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+#css-editor{
+  top: 47vh;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+#preview{
+  height: 100% !important;
+  width: 100% !important;
 }
