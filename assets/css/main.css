@@ -84,7 +84,7 @@ a:active{
   top: 55px;
   left: 0px;
   border-right: solid 1px #e9eced;
-  height: calc(100vh - 55px);
+  bottom: 0px;
   background: #ffffff;
 }
 .advert{
@@ -122,11 +122,14 @@ a:active{
   height: 50%;
 }
 .javascript, .html{
-  top: 0px;
+  top: 0;
   border-bottom: solid 1px darkgray;
+  position: absolute;
 }
 .result, .css{
-  top: 0px;
+  top: auto;
+  position: absolute;
+  bottom: 0;
 }
 
 .colbox textarea{
@@ -167,9 +170,9 @@ textarea:focus{
   right: 0px;
 }
 .css .button{
-  top: 47vh;
+  top: auto;
   right: 0px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 .javascript .button{
   top: 0px;
@@ -181,13 +184,13 @@ textarea:focus{
 }
 #js-editor, #htm-editor{
   top: 0px;
-  bottom: 47vh;
+  bottom: 0px;
   left: 0px;
   right: 0px;
   position: absolute;
 }
 #css-editor{
-  top: 47vh;
+  top: 1px;
   bottom: 0px;
   left: 0px;
   right: 0px;
