@@ -60,7 +60,11 @@ a{
   text-decoration: none;
   color: #3c3c3c;
 }
-a:link, a:visited, a:hover{
+a:hover{
+  text-decoration: none;
+  color: #3c3c3c;
+}
+a:active{
   text-decoration: none;
   color: #3c3c3c;
 }
