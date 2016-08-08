@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://togetherjs.com/togetherjs-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Galada">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/ct-paper.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <meta charset="UTF-8">
     <title>Fiddle</title>
 </head>
 <body>
     <div class="header">
-      <div class="logo"><p>Fiddle</p></div>
+      <div class="logo">Fiddle</div>
       <div class="header-nav">
         <ul>
-          <li><div id="Run"><a href="#"><i class="glyphicon glyphicon-play icon"></i>Run</a></div></li>
-          <li><div><a href="#"><i class="glyphicon glyphicon-align-left icon"></i>Tidy</a></div></li>
-          <li><div><a href="#"><i class="glyphicon glyphicon-road icon"></i>Collaborate</a></div></li>
+          <li><div id="Run"><a href="#" title="ALT + R"><i class="glyphicon glyphicon-play icon"></i>Run</a></div></li>
+          <li><div id="Save"><a href="#" title="ALT + S"><i class="glyphicon glyphicon-pencil icon"></i>Save</a></div></li>
+          <li><div id="Tidy"><a href="#" title="ALT + T"><i class="glyphicon glyphicon-align-left icon"></i>Tidy</a></div></li>
+          <li><div id="Together"><a href="#" title="ALT + C"><i class="glyphicon glyphicon-thumbs-up icon"></i>Collaborate</a></div></li>
         </ul>
+        <div class="pull-right extreme">
+            <div class="form-group">
+                <input type="text" placeholder="Name your Fiddle" class="form-control" />
+            </div>
+        </div>
       </div>
     </div>
     <div class="sidebar">
-      <div></div>
       <div class="advert"></div>
     </div>
     <div class="main-content">
         <div class="column left">
             <div class="html colbox">
             	<div id="htm-editor"></div>
-              	<div class="button"><p>HTML</p><i class="glyphicon glyphicon-cog icon"></i></div>
+              	<div class="button" data-toggle="modal" data-target="#myModal" href="#html"><p>HTML</p><i class="glyphicon glyphicon-cog icon"></i></div>
             </div>
             <div class="css colbox">
               <div id="css-editor"></div>
-              <div class="button"><p>CSS</p><i class="glyphicon glyphicon-cog icon"></i></div>
+              <div class="button" data-toggle="modal" data-target="#myModal" href="#css"><p>CSS</p><i class="glyphicon glyphicon-cog icon"></i></div>
             </div>
         </div>
         <div class="column right">
             <div class="javascript colbox">
               <div id="js-editor"></div>
-              <div class="button"><p>JScript</p><i class="glyphicon glyphicon-cog icon"></i></div>
+              <div class="button" data-toggle="modal" data-target="#myModal" href="#javascript"><p>JScript</p><i class="glyphicon glyphicon-cog icon"></i></div>
             </div>
           <div class="result colbox">
             <iframe class="editor" id="preview" name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0">
@@ -44,10 +52,67 @@
           </div>
         </div>
     </div>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="assets/js/ace.js"></script>
-  <script src="assets/js/ext-beautify.js"></script>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
+                                <li><a href="#css" data-toggle="tab">CSS</a></li>
+                                <li><a href="#javascript" data-toggle="tab">JAVASCRIPT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="my-tab-content" class="tab-content text-center">
+                        <div class="tab-pane active" id="html">
+                            <p>HTML Settings</p>
+                            <hr />
+                            <label for="dropDownMenu3">Language</label>
+                            <div class="dropdown">
+                                <div class="btn-group">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">
+                                        HTML 5
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu scrollable-menu" id="dropdownMenu3" role="menu" aria-labelledby="dropdownMenu3">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="">XHTML 1.0 Strict</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="">XHTML 1.0 Transitional</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 5</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 4.01 Strict</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 4.01 Transitional</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="css">
+                            <p><b>CSS Settings.</b></p>
+                            <hr />
+                        </div>
+                        <div class="tab-pane" id="javascript">
+                            <p><b>JavaScript Settings</b></p>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  <script src="node_modules/js-beautify/beautify-html.js"></script>
+  <script src="node_modules/js-beautify/beautify-css.js"></script>
+  <script src="node_modules/js-beautify/beautify.js"></script>
+  <script src="assets/js/ace.js"></script>
   <script src="assets/js/ext-language_tools.js"></script>
+  <script src="node_modules/node-zip/lib/nodezip.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.10.4.custom.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
     ace.require("ace/ext/language_tools");
@@ -55,6 +120,7 @@
     var htmlEditor = ace.edit("htm-editor");
     htmlEditor.setTheme("ace/theme/xcode");
     htmlEditor.getSession().setMode("ace/mode/html");
+    htmlEditor.$blockScrolling = Infinity;
     htmlEditor.setOptions({
       enableBasicAutocompletion: true
     });
@@ -62,6 +128,7 @@
     var cssEditor = ace.edit("css-editor");
     cssEditor.setTheme("ace/theme/xcode");
     cssEditor.getSession().setMode("ace/mode/css");
+    cssEditor.$blockScrolling = Infinity;
     cssEditor.setOptions({
       enableBasicAutocompletion: true
     });
@@ -69,6 +136,7 @@
     var jsEditor = ace.edit("js-editor");
     jsEditor.setTheme("ace/theme/xcode");
     jsEditor.getSession().setMode("ace/mode/javascript");
+    jsEditor.$blockScrolling = Infinity;
     jsEditor.setOptions({
       enableBasicAutocompletion: true
     });
